@@ -11,14 +11,14 @@ from oauth2client.service_account import ServiceAccountCredentials
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 regex_git=r'^(?:https?:\/\/)?(?:www\.)?github\.com\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+$'
 regex_link =  '^(?:https?:\/\/)?(?:www\.)?linkedin\.com\/(?:in|pub|company)\/[a-zA-Z0-9-_.]+\/?$'
-st.set_page_config(page_title="TZ'23 General Registration",page_icon="IETE_logo.png")
+st.set_page_config(page_title="Qrack")
 #go to home page
-link_home = "**[Go to home page](https://technotronz23.wixsite.com/home)**"
-e,w,r=st.columns([2,2, 1])
-with r:
-    st.markdown(link_home, unsafe_allow_html=True)
-img = Image.open('TZ_logo.png')
-st.image(img)
+# link_home = "**[Go to home page](https://technotronz23.wixsite.com/home)**"
+# e,w,r=st.columns([2,2, 1])
+# with r:
+#     st.markdown(link_home, unsafe_allow_html=True)
+# img = Image.open('TZ_logo.png')
+# st.image(img)
 hide_ststyle = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -29,72 +29,53 @@ hide_ststyle = """
 # st.write("test1")
 
 #line
-def fun3():
+# def fun3():
 #             st.write(f'''<a target="_self" href="https://discord.gg/WgEDCtPN" target="_blank"><button>Click to join Technotronz'23 Discord server to follow regular updates</button></a>''',unsafe_allow_html=True)
 #               link = '[Make sure you join our discord server to receive regular updates](https://discord.gg/Pf4cqxZtQu)'
 #               st.markdown(link, unsafe_allow_html=True)
-    a2,b2,c2=st.columns([0.1,3,0.1])
+#     a2,b2,c2=st.columns([0.1,3,0.1])
     
-    with b2:
-      st.write('''<h5>Please join our Valediction (7th FEB 5:30 pm) to know the Prize Winners!</h5>''',unsafe_allow_html=True)
-    img1 = Image.open('valediction poster.jpg')
-    st.image(img1)
-    a1,b1=st.columns([1,1.9])
-    with b1:
-      st.write('''
-				<style>
-				.button {
-				background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
-				border: none;
-				color: white;
-				padding: 15px 30px;
-				text-align: center;
-				text-decoration: none;
-				display: inline-block;
-				font-size: 16px;
-				margin: 3px 1px;
-				transition-duration: 0.4s;
-				cursor: pointer;
-				border-radius: 13px;
-				width: auto;
-				}
-				.button1 {
-				background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);; 
-				color: white; 
-				border: 2px solid #314755;
-				}
-				.button1:hover {
-				background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
-				color: white;
-				}
-				</style>
-				<a  href="https://psgct.webex.com/psgct/j.php?MTID=m979527629f33b3a72076f10ba121a867" target="_blank" > 
-							<button class="button button1">
-								Click here
-							</button>
-						</a>
-				''',
-				unsafe_allow_html=True)
-FROM = "technotronz23@gmail.com"
-password="qsfcotxmimrdiogr"
-# password="jsvatshndhrndezr"
-FROM = "technotronz.23.official@gmail.com"
-password="bfggnsnnxzbxufnj"
-FROM = "technotronz.tz.23.iete@gmail.com"
-password="nowodhslyebzlrsb"
-def em(id,name,to,html_,number):
-    message = EMsg()
-    message['subject'] = "Your general registration for Technotronz'23 is confirmed!"  
-    message['to'] = to
-    message['from']=FROM
-    html_ = html_.replace('technocrats',name)
-    html_ = html_.replace('TZ23III',id)
-    html_ = html_.replace('thenameis',name)
-    html_ = html_.replace('1234567890',number)
-    message.add_alternative(html_,subtype='html')
-    with smtplib.SMTP_SSL('smtp.gmail.com',465) as smtp:
-        smtp.login(FROM,password)
-        smtp.send_message(message)
+#     with b2:
+#       st.write('''<h5>Please join our Valediction (7th FEB 5:30 pm) to know the Prize Winners!</h5>''',unsafe_allow_html=True)
+#     img1 = Image.open('valediction poster.jpg')
+#     st.image(img1)
+#     a1,b1=st.columns([1,1.9])
+#     with b1:
+#       st.write('''
+# 				<style>
+# 				.button {
+# 				background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
+# 				border: none;
+# 				color: white;
+# 				padding: 15px 30px;
+# 				text-align: center;
+# 				text-decoration: none;
+# 				display: inline-block;
+# 				font-size: 16px;
+# 				margin: 3px 1px;
+# 				transition-duration: 0.4s;
+# 				cursor: pointer;
+# 				border-radius: 13px;
+# 				width: auto;
+# 				}
+# 				.button1 {
+# 				background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);; 
+# 				color: white; 
+# 				border: 2px solid #314755;
+# 				}
+# 				.button1:hover {
+# 				background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
+# 				color: white;
+# 				}
+# 				</style>
+# 				<a  href="https://psgct.webex.com/psgct/j.php?MTID=m979527629f33b3a72076f10ba121a867" target="_blank" > 
+# 							<button class="button button1">
+# 								Click here
+# 							</button>
+# 						</a>
+# 				''',
+# 				unsafe_allow_html=True)
+
 st.markdown(hide_ststyle, unsafe_allow_html=True)
 i_=0
 scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
