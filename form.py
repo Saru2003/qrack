@@ -165,6 +165,7 @@ if d:
 		st.success("Kindly wait until we cook your resume!")
 		st.balloons()
 		submit = form.form_submit_button("Generate PDF")
+		form = left.form("template_form")
 		env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
 		template = env.get_template("template.html")
 
@@ -178,7 +179,6 @@ if d:
 
 		    pdf = pdfkit.from_string(html, False)
 		    st.balloons()
-
 		    right.success("🎉 Your diploma was generated!")
 		    # st.write(html, unsafe_allow_html=True)
 		    # st.write("")
