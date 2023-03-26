@@ -146,22 +146,23 @@ if d:
 		st.error("Enter valid Mail ID")
 	else:
 		mail_err=1
-	if check2(git):
-		st.error("Enter valid GitHUB profile URL")
-	else:
-		git_err=1
+# 	if check2(git):
+# 		st.error("Enter valid GitHUB profile URL")
+# 	else:
+# 		git_err=1
 
-	if check3(li):
-		st.error("Enter valid linkedin profile URL")
-	else:
-		li_err=1
-
+# 	if check3(li):
+# 		st.error("Enter valid linkedin profile URL")
+# 	else:
+# 		li_err=1
+        li_err=git_err=1
 
 	if name_err==mail_err==git_err==li_err==1:
 		r=sheet.cell(len(data),1).value
 	# 		em("TZ23"+str(int(r[4:])+1),name,mail,html_gr,ph)
 		sheet.insert_row(row)
 		st.success("Kindly wait until we cook your resume!")
+		st.balloons()
 		submit = form.form_submit_button("Generate PDF")
 		env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
 		template = env.get_template("template.html")
