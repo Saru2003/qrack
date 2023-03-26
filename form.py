@@ -87,9 +87,9 @@ one,two,thr=st.columns([0.1,1, 0.1])
 # with two:
 #     st.header("Technotronz'23 General Registration ")
 
-dnote_er = 'Disclaimer: This webpage supports and accepts responses only in latest versions of the following browsers (Google Chrome, Microsoft Edge, Safari, Firefox)'
+# dnote_er = 'Disclaimer: This webpage supports and accepts responses only in latest versions of the following browsers (Google Chrome, Microsoft Edge, Safari, Firefox)'
 
-st.markdown(dnote_er, unsafe_allow_html=True)
+# st.markdown(dnote_er, unsafe_allow_html=True)
 # st.error("Online registrations are closed. Thank you!")
 name=st.text_input('Enter your full name: ')
 mail=st.text_input('Enter your mail ID: ')
@@ -129,64 +129,65 @@ div.stButton > button:first-child {
 }
 </style>""", unsafe_allow_html=True)
 
-
-sheet = client.open("kriya").sheet1
-data=sheet.get_all_values()
-
-
-name_err=mail_err=git_err=li_err=0
-row=[name,mail,git,li]
-if not valid(name):
-	st.error("Enter name in proper format")
-else:
-	name_err=1
-
-if check(mail):
-	st.error("Enter valid Mail ID")
-else:
-	mail_err=1
-if check2(git):
-	st.error("Enter valid GitHUB profile URL")
-else:
-	git_err=1
-
-if check3(li):
-	st.error("Enter valid linkedin profile URL")
-else:
-	li_err=1
+d=st.button("submit")
+if d:
+	sheet = client.open("kriya").sheet1
+	data=sheet.get_all_values()
 
 
-if name_err==mail_err==git_err==li_err==1:
-	r=sheet.cell(len(data),1).value
-# 		em("TZ23"+str(int(r[4:])+1),name,mail,html_gr,ph)
-	sheet.insert_row(row)
-	st.success("Kindly wait until we cook your resume!")
-	submit = form.form_submit_button("Generate PDF")
-	env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
-	template = env.get_template("template.html")
+	name_err=mail_err=git_err=li_err=0
+	row=[name,mail,git,li]
+	if not valid(name):
+		st.error("Enter name in proper format")
+	else:
+		name_err=1
 
-	if submit:
-	    html = template.render(
-		name=name,
-		li=li,
-		git=git,
-		mail=mail,
-	    )
+	if check(mail):
+		st.error("Enter valid Mail ID")
+	else:
+		mail_err=1
+	if check2(git):
+		st.error("Enter valid GitHUB profile URL")
+	else:
+		git_err=1
 
-	    pdf = pdfkit.from_string(html, False)
-	    st.balloons()
+	if check3(li):
+		st.error("Enter valid linkedin profile URL")
+	else:
+		li_err=1
 
-	    right.success("🎉 Your diploma was generated!")
-	    # st.write(html, unsafe_allow_html=True)
-	    # st.write("")
-	    st.download_button(
-		"⬇️ Download PDF",
-		data=pdf,
-		file_name="diploma.pdf",
-		mime="application/octet-stream",
-	    )
-# 		a2,b2,c2=st.columns([1.4,3,0.5])
-# 		with b2:
-# 			st.write(f'''<h5>Your Registration ID: {"TZ23"+str(int(r[4:])+1)} <br></h5>''',unsafe_allow_html=True)
+
+	if name_err==mail_err==git_err==li_err==1:
+		r=sheet.cell(len(data),1).value
+	# 		em("TZ23"+str(int(r[4:])+1),name,mail,html_gr,ph)
+		sheet.insert_row(row)
+		st.success("Kindly wait until we cook your resume!")
+		submit = form.form_submit_button("Generate PDF")
+		env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
+		template = env.get_template("template.html")
+
+		if submit:
+		    html = template.render(
+			name=name,
+			li=li,
+			git=git,
+			mail=mail,
+		    )
+
+		    pdf = pdfkit.from_string(html, False)
+		    st.balloons()
+
+		    right.success("🎉 Your diploma was generated!")
+		    # st.write(html, unsafe_allow_html=True)
+		    # st.write("")
+		    st.download_button(
+			"⬇️ Download PDF",
+			data=pdf,
+			file_name="diploma.pdf",
+			mime="application/octet-stream",
+		    )
+	# 		a2,b2,c2=st.columns([1.4,3,0.5])
+	# 		with b2:
+	# 			st.write(f'''<h5>Your Registration ID: {"TZ23"+str(int(r[4:])+1)} <br></h5>''',unsafe_allow_html=True)
 
 
