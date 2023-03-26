@@ -1,11 +1,12 @@
 import streamlit as st
-# from streamlit.components.v1 import iframe
-import smtplib
+from streamlit.components.v1 import iframe
+import pdfkit
+from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 import re
 from PIL import Image
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from email.message import EmailMessage as EMsg
+
 #line
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 regex_git=r'^(?:https?:\/\/)?(?:www\.)?github\.com\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+$'
@@ -179,6 +180,30 @@ if d:
 # 		em("TZ23"+str(int(r[4:])+1),name,mail,html_gr,ph)
 		sheet.insert_row(row)
 		st.success("Kindly wait until we cook your resume!")
+		submit = form.form_submit_button("Generate PDF")
+		env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
+		template = env.get_template("template.html")
+
+		if submit:
+		    html = template.render(
+			student=student,
+			course=course,
+			grade=f"{grade}/100",
+			date=date.today().strftime("%B %d, %Y"),
+		    )
+
+		    pdf = pdfkit.from_string(html, False)
+		    st.balloons()
+
+		    right.success("🎉 Your diploma was generated!")
+		    # st.write(html, unsafe_allow_html=True)
+		    # st.write("")
+		    st.download_button(
+			"⬇️ Download PDF",
+			data=pdf,
+			file_name="diploma.pdf",
+			mime="application/octet-stream",
+		    )
 # 		a2,b2,c2=st.columns([1.4,3,0.5])
 # 		with b2:
 # 			st.write(f'''<h5>Your Registration ID: {"TZ23"+str(int(r[4:])+1)} <br></h5>''',unsafe_allow_html=True)
