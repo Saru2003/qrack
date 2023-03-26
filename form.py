@@ -6,7 +6,7 @@ import re
 from PIL import Image
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-
+li_err=git_err=1
 #line
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 regex_git=r'^(?:https?:\/\/)?(?:www\.)?github\.com\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+$'
@@ -135,7 +135,7 @@ if d:
 	data=sheet.get_all_values()
 
 
-	name_err=mail_err=git_err=li_err=0
+	name_err=mail_err=0
 	row=[name,mail,git,li]
 	if not valid(name):
 		st.error("Enter name in proper format")
@@ -156,7 +156,6 @@ if d:
 # 	else:
 # 		li_err=1
 
-        li_err=git_err=1
 
 	if name_err==mail_err==git_err==li_err==1:
 		r=sheet.cell(len(data),1).value
