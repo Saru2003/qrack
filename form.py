@@ -155,6 +155,7 @@ if d:
 # 		st.error("Enter valid linkedin profile URL")
 # 	else:
 # 		li_err=1
+
         li_err=git_err=1
 
 	if name_err==mail_err==git_err==li_err==1:
