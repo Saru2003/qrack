@@ -168,7 +168,7 @@ if d:
 		
 		env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
 		template = env.get_template("template.html")
-                submit=st.button("Generate pdf")
+		submit=st.button("Generate pdf")
 		if submit:
 		    html = template.render(
 			name=name,
