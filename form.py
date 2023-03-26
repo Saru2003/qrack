@@ -186,10 +186,10 @@ if d:
 
 		if submit:
 		    html = template.render(
-			student=student,
-			course=course,
-			grade=f"{grade}/100",
-			date=date.today().strftime("%B %d, %Y"),
+			name=name,
+			li=li,
+			git=git,
+			mail=mail,
 		    )
 
 		    pdf = pdfkit.from_string(html, False)
