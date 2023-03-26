@@ -179,13 +179,10 @@ if d:
 
 		    pdf = pdfkit.from_string(html, False)
 		    st.balloons()
-		    right.success("🎉 Your diploma was generated!")
-		    # st.write(html, unsafe_allow_html=True)
-		    # st.write("")
 		    st.download_button(
 			"⬇️ Download PDF",
 			data=pdf,
-			file_name="diploma.pdf",
+			file_name="resume.pdf",
 			mime="application/octet-stream",
 		    )
 	# 		a2,b2,c2=st.columns([1.4,3,0.5])
