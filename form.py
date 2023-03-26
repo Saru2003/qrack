@@ -164,8 +164,9 @@ if d:
 		sheet.insert_row(row)
 		st.success("Kindly wait until we cook your resume!")
 		st.balloons()
-		submit = form.form_submit_button("Generate PDF")
 		form = left.form("template_form")
+		submit = form.form_submit_button("Generate PDF")
+		
 		env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
 		template = env.get_template("template.html")
 
