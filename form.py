@@ -129,7 +129,7 @@ div.stButton > button:first-child {
 }
 </style>""", unsafe_allow_html=True)
 
-with col1:
+
 sheet = client.open("kriya").sheet1
 data=sheet.get_all_values()
 
